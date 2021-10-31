@@ -88,14 +88,14 @@ function decorate(editor) {
       let finalRenderStr = "";
 
       match.forEach((item) => {
-        finalRenderStr = `${finalRenderStr} ${convertToPx(item)}`;
+        finalRenderStr = `${finalRenderStr} ${convertToPx(item)}px`;
       });
 
       let decoration = {
         range: range,
         // renderOptions: {after: {contentText: `${convertToPx(match[0])}px`, color: 'red'}},
         renderOptions: {
-          after: { contentText: `${finalRenderStr}px`, color: "red" },
+          after: { contentText: `${finalRenderStr}`, color: "red" },
         },
       };
 

@@ -19,7 +19,19 @@
     "onLanguage:typescript"
   ],
   "main": "./extension.js",
-  "contributes": {},
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Rem to Px comment configuration",
+      "properties": {
+        "remToPxComment.commentColor": {
+          "type": "string",
+          "default": "#36C210",
+          "description": "Decoration color for the comment value"
+        }
+      }
+    }
+  },
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",

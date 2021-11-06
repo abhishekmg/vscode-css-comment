@@ -87,6 +87,8 @@ function decorate(editor) {
 
       let finalRenderStr = "";
 
+      const configuration = vscode.workspace.getConfiguration('remToPxComment')
+
       match.forEach((item) => {
         finalRenderStr = `${finalRenderStr} ${convertToPx(item)}px`;
       });
@@ -95,7 +97,7 @@ function decorate(editor) {
         range: range,
         // renderOptions: {after: {contentText: `${convertToPx(match[0])}px`, color: 'red'}},
         renderOptions: {
-          after: { contentText: `${finalRenderStr}`, color: "red" },
+          after: { contentText: `${finalRenderStr}`, color: configuration.commentColor },
         },
       };
 

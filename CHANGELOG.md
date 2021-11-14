@@ -1,3 +1,9 @@
+#### 0.0.5 (2021-11-14)
+
+##### Continuous Integration
+
+*  added latest package for v0.0.4 ([fcac3536](https://github.com/abhishekmg/vscode-css-comment/commit/fcac35365715e4e6cd8ba0330f440e1766f99ae4))
+
 #### 0.0.4 (2021-11-14)
 
 ##### Continuous Integration

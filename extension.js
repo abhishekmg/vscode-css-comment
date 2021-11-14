@@ -30,7 +30,9 @@ function convertToPx(value) {
 
   var numValue = value.match(regxToGetNumberFromString)[0];
 
-  return numValue * 16;
+  const configuration = vscode.workspace.getConfiguration('remToPxComment')
+
+  return numValue * configuration.remConversionValue;
 }
 
 function getLengthOfAllStringsInArray(arr) {

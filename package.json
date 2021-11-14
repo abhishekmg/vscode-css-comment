@@ -2,7 +2,7 @@
   "name": "px-comment",
   "displayName": "rem-to-px-comment",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "abhishekmg",
   "repository": {
     "type": "git",
@@ -14,6 +14,17 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "css",
+    "styling",
+    "px",
+    "rem"
+  ],
+  "icon": "images/rem-to-px-comment-logo.png",
+  "galleryBanner": {
+    "color": "#000000",
+    "theme": "dark"
+  },
   "activationEvents": [
     "onLanguage:javascript",
     "onLanguage:typescript"

@@ -1,3 +1,13 @@
+#### 0.0.4 (2021-11-14)
+
+##### Continuous Integration
+
+*  updated vs code package ([9ed68077](https://github.com/abhishekmg/vscode-css-comment/commit/9ed680772a9ab04fd1f503f92d7712f6245045da))
+
+##### New Features
+
+*  added logo and updated code comments ([372ce656](https://github.com/abhishekmg/vscode-css-comment/commit/372ce6560540db4a0bfcdb8eac99c61c8b4bbdce))
+
 #### 0.0.3 (2021-11-06)
 
 ##### Documentation Changes

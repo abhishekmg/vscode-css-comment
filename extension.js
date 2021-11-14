@@ -20,8 +20,6 @@ function activate(context) {
       (editor) => editor.document.uri === event.document.uri
     )[0];
 
-
-
     // we deocorate that one editor
     decorate(openEditor);
   });
@@ -52,8 +50,7 @@ function getLengthOfAllStringsInArray(arr) {
 function decorate(editor) {
   // gets all the text in editor
   let sourceCode = editor.document.getText();
-  // regx to get console log
-  // let regex = /(console\.log)/;
+  // regx to get rem
   let regex = /[\d\.]+rem/g;
 
   // an array that contains the decorated text
@@ -61,20 +58,14 @@ function decorate(editor) {
 
   const sourceCodeArr = sourceCode.split("\n");
 
-
   // loops the text in editor
   for (let line = 0; line < sourceCodeArr.length; line++) {
-    let match = sourceCodeArr[line].match(regex); // match is true if line has console.log text
+    let match = sourceCodeArr[line].match(regex); // match is true if line has rem text
 
     if (match !== null) {
-      // while ((match = /[\d\.]+rem/.exec(sourceCodeArr[line]) ) != null) {
-      //   console.log("match found at " + match.index);
-      // }
-
       const matchIndex = /[\d\.]+rem/.exec(sourceCodeArr[line]).index;
 
-
-      // if line has a console.log text
+      // if line has a rem text
       // what is Range ? https://code.visualstudio.com/api/references/vscode-api#Range
       let range = new vscode.Range(
         // what is Position  https://code.visualstudio.com/api/references/vscode-api#Position
@@ -95,13 +86,12 @@ function decorate(editor) {
 
       let decoration = {
         range: range,
-        // renderOptions: {after: {contentText: `${convertToPx(match[0])}px`, color: 'red'}},
         renderOptions: {
           after: { contentText: `${finalRenderStr}`, color: configuration.commentColor },
         },
       };
 
-      // range tells what position to highlight log
+      // range tells what position to highlight
 
       // pushing this is array
       decorationsArray.push(decoration);

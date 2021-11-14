@@ -1,3 +1,17 @@
+#### 0.0.6 (2021-11-14)
+
+##### Continuous Integration
+
+*  added latest package for v0.0.4 ([fcac3536](https://github.com/abhishekmg/vscode-css-comment/commit/fcac35365715e4e6cd8ba0330f440e1766f99ae4))
+
+##### Documentation Changes
+
+*  updated readme for rem config and added latest vs code package ([b4e6e36e](https://github.com/abhishekmg/vscode-css-comment/commit/b4e6e36e9655bf798ab5d560e0e88e741fa33110))
+
+##### New Features
+
+*  added rem conversion config and updated logo ([a74c499c](https://github.com/abhishekmg/vscode-css-comment/commit/a74c499c8f94c2d1fe111984a7bf8f5702c11259))
+
 #### 0.0.5 (2021-11-14)
 
 ##### Continuous Integration

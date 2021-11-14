@@ -2,7 +2,7 @@
   "name": "px-comment",
   "displayName": "rem-to-px-comment",
   "description": "",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "publisher": "abhishekmg",
   "repository": {
     "type": "git",
@@ -39,6 +39,11 @@
           "type": "string",
           "default": "#36C210",
           "description": "Decoration color for the comment value"
+        },
+        "remToPxComment.remConversionValue": {
+          "type": "number",
+          "default": "16",
+          "description": "value to convert px to rem, default is 16px"
         }
       }
     }

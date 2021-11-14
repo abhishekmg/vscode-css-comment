@@ -12,5 +12,8 @@ The following properties are configurable:
 ```javascript
   // Decoration color for the comment value
   "remToPxComment.commentColor": "#36C210",
+
+  // value to convert px to rem, default is 16px
+  "remToPxComment.remConversionValue": 16
 ```
 

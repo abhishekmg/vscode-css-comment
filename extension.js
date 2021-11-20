@@ -30,9 +30,15 @@ function convertToPx(value) {
 
   var numValue = value.match(regxToGetNumberFromString)[0];
 
-  const configuration = vscode.workspace.getConfiguration('remToPxComment')
+  const configuration = vscode.workspace.getConfiguration("remToPxComment");
 
-  return numValue * configuration.remConversionValue;
+  const finalValue = numValue * configuration.remConversionValue;
+
+  if (isNaN(finalValue)) {
+    return null;
+  } else {
+    return finalValue;
+  }
 }
 
 function getLengthOfAllStringsInArray(arr) {
@@ -80,16 +86,21 @@ function decorate(editor) {
 
       let finalRenderStr = "";
 
-      const configuration = vscode.workspace.getConfiguration('remToPxComment')
+      const configuration = vscode.workspace.getConfiguration("remToPxComment");
 
       match.forEach((item) => {
-        finalRenderStr = `${finalRenderStr} ${convertToPx(item)}px`;
+        finalRenderStr = `${finalRenderStr} ${
+          convertToPx(item) ? `${convertToPx(item)}px` : ""
+        }`;
       });
 
       let decoration = {
         range: range,
         renderOptions: {
-          after: { contentText: `${finalRenderStr}`, color: configuration.commentColor },
+          after: {
+            contentText: `${finalRenderStr}`,
+            color: configuration.commentColor,
+          },
         },
       };
 

@@ -1,3 +1,17 @@
+#### 0.0.7 (2021-11-20)
+
+##### Chores
+
+*  updated change log ([209c1186](https://github.com/abhishekmg/vscode-css-comment/commit/209c1186a8acfa9cc515f3ed7275b078ba2a7a26))
+
+##### Continuous Integration
+
+*  generated latest package ([9b0e367c](https://github.com/abhishekmg/vscode-css-comment/commit/9b0e367cd50e42d6973076400df7fdf2c464caf5))
+
+##### Bug Fixes
+
+*  NaNpx rendered for rem value with no number ([d2e31d8d](https://github.com/abhishekmg/vscode-css-comment/commit/d2e31d8d85f852c1af8046cacb8fe6bf6dfcea63))
+
 #### 0.0.6 (2021-11-14)
 ##### Documentation Changes
 

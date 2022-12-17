@@ -12,7 +12,8 @@ const decorationType = vscode.window.createTextEditorDecorationType({
 /**
  * @param {vscode.ExtensionContext} context
  */
-function activate(context) {
+function activate() {
+// context
   vscode.workspace.onDidChangeTextDocument((event) => {
     // visibleTextEditors -> array of all open editors
     const openEditor = vscode.window.visibleTextEditors.filter(

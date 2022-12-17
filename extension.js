@@ -25,14 +25,22 @@ function activate(context) {
   });
 }
 
-function convertToPx(value) {
+function convertToRemOrPx(value, convertTo = "rem") {
   var regxToGetNumberFromString = /[\d\.]+/;
 
   var numValue = value.match(regxToGetNumberFromString)[0];
 
   const configuration = vscode.workspace.getConfiguration("remToPxComment");
 
-  const finalValue = numValue * configuration.remConversionValue;
+  let finalValue;
+
+  if (convertTo === "rem") {
+    finalValue = numValue * configuration.remConversionValue;
+  } else if (convertTo === "px") {
+    finalValue = numValue / configuration.remConversionValue;
+  } else {
+    return NaN;
+  }
 
   if (isNaN(finalValue)) {
     return null;
@@ -56,22 +64,31 @@ function getLengthOfAllStringsInArray(arr) {
 }
 
 function decorate(editor) {
+  const configuration = vscode.workspace.getConfiguration("remToPxComment");
+
   // gets all the text in editor
   let sourceCode = editor.document.getText();
   // regx to get rem
   let regex = /[\d\.]+rem/g;
+
+  let pxRegex = /[\d\.]+px/g;
 
   // an array that contains the decorated text
   let decorationsArray = [];
 
   const sourceCodeArr = sourceCode.split("\n");
 
-  // loops the text in editor
+  const pxOrRemConfig = configuration.convertToRemOrPx;
+
+  const convertToPx = pxOrRemConfig === "px";
+
   for (let line = 0; line < sourceCodeArr.length; line++) {
-    let match = sourceCodeArr[line].match(regex); // match is true if line has rem text
+    let match = sourceCodeArr[line].match(convertToPx ? regex : pxRegex); // match is true if line has rem text
 
     if (match !== null) {
-      const matchIndex = /[\d\.]+rem/.exec(sourceCodeArr[line]).index;
+      const matchIndex = convertToPx
+        ? /[\d\.]+rem/.exec(sourceCodeArr[line]).index
+        : /[\d\.]+px/.exec(sourceCodeArr[line]).index;
 
       // if line has a rem text
       // what is Range ? https://code.visualstudio.com/api/references/vscode-api#Range
@@ -86,13 +103,23 @@ function decorate(editor) {
 
       let finalRenderStr = "";
 
-      const configuration = vscode.workspace.getConfiguration("remToPxComment");
-
-      match.forEach((item) => {
-        finalRenderStr = `${finalRenderStr} ${
-          convertToPx(item) ? `${convertToPx(item)}px` : ""
-        }`;
-      });
+      if (convertToPx) {
+        match.forEach((item) => {
+          finalRenderStr = `${finalRenderStr} ${
+            convertToRemOrPx(item, "px")
+              ? `${convertToRemOrPx(item, "px")}px`
+              : ""
+          }`;
+        });
+      } else {
+        match.forEach((item) => {
+          finalRenderStr = `${finalRenderStr} ${
+            convertToRemOrPx(item, "rem")
+              ? `${convertToRemOrPx(item, "rem")}rem`
+              : ""
+          }`;
+        });
+      }
 
       let decoration = {
         range: range,

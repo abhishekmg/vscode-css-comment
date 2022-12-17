@@ -2,7 +2,7 @@
   "name": "px-comment",
   "displayName": "rem-to-px-comment",
   "description": "",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "publisher": "abhishekmg",
   "repository": {
     "type": "git",
@@ -48,7 +48,10 @@
         "remToPxComment.convertToRemOrPx": {
           "type": "string",
           "default": "px",
-          "enum": ["px", "rem"],
+          "enum": [
+            "px",
+            "rem"
+          ],
           "description": "tell if conversion is from rem to px to the other way around"
         }
       }

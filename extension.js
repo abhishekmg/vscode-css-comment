@@ -13,7 +13,7 @@ const decorationType = vscode.window.createTextEditorDecorationType({
  * @param {vscode.ExtensionContext} context
  */
 function activate() {
-// context
+  // context
   vscode.workspace.onDidChangeTextDocument((event) => {
     // visibleTextEditors -> array of all open editors
     const openEditor = vscode.window.visibleTextEditors.filter(
@@ -83,10 +83,13 @@ function decorate(editor) {
 
   const convertToPx = pxOrRemConfig === "px";
 
+  function containsNumbers(str) {
+    return /\d/.test(str);
+  }
+
   for (let line = 0; line < sourceCodeArr.length; line++) {
     let match = sourceCodeArr[line].match(convertToPx ? regex : pxRegex); // match is true if line has rem text
-
-    if (match !== null) {
+    if (match !== null && match.length !== 0 && containsNumbers(match[0])) {
       const matchIndex = convertToPx
         ? /[\d\.]+rem/.exec(sourceCodeArr[line]).index
         : /[\d\.]+px/.exec(sourceCodeArr[line]).index;

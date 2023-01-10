@@ -31,31 +31,75 @@
   ],
   "main": "./extension.js",
   "contributes": {
-    "configuration": {
-      "type": "object",
-      "title": "Rem to Px comment configuration",
-      "properties": {
-        "remToPxComment.commentColor": {
-          "type": "string",
-          "default": "#36C210",
-          "description": "Decoration color for the comment value"
-        },
-        "remToPxComment.remConversionValue": {
-          "type": "number",
-          "default": "16",
-          "description": "value to convert px to rem, default is 16px"
-        },
-        "remToPxComment.convertToRemOrPx": {
-          "type": "string",
-          "default": "px",
-          "enum": [
-            "px",
-            "rem"
-          ],
-          "description": "tell if conversion is from rem to px to the other way around"
+    "keybindings": [
+      {
+          "command": "editor.emmet.action.incrementNumberByOne",
+          "key": "ctrl+shift+i",
+          "mac": "cmd+shift+i",
+          "when": "config.remToPxComment.addKeyBoardShortcuts" 
+      },
+      {
+        "command": "editor.emmet.action.incrementNumberByOneTenth",
+        "key": "ctrl+shift+h",
+        "mac": "cmd+shift+h",
+        "when": "config.remToPxComment.addKeyBoardShortcuts" 
+      },
+      {
+        "command": "editor.emmet.action.incrementNumberByTen",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "config.remToPxComment.addKeyBoardShortcuts" 
+      },
+      {
+        "command": "editor.emmet.action.decrementNumberByOne",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d",
+        "when": "config.remToPxComment.addKeyBoardShortcuts" 
+      },
+      {
+        "command": "editor.emmet.action.decrementNumberByOneTenth",
+        "key": "ctrl+shift+z",
+        "mac": "cmd+shift+z",
+        "when": "config.remToPxComment.addKeyBoardShortcuts" 
+      },
+      {
+        "command": "editor.emmet.action.decrementNumberByTen",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "config.remToPxComment.addKeyBoardShortcuts" 
+      }
+    ],
+    "configuration": [
+      {
+        "type": "object",
+        "title": "Rem to Px comment configuration",
+        "properties": {
+          "remToPxComment.commentColor": {
+            "type": "string",
+            "default": "#36C210",
+            "description": "Decoration color for the comment value"
+          },
+          "remToPxComment.remConversionValue": {
+            "type": "number",
+            "default": "16",
+            "description": "value to convert px to rem, default is 16px"
+          },
+          "remToPxComment.convertToRemOrPx": {
+            "type": "string",
+            "default": "px",
+            "enum": [
+              "px",
+              "rem"
+            ],
+            "description": "tell if conversion is from rem to px to the other way around"
+          },
+          "remToPxComment.addKeyBoardShortcuts": {
+            "type": "boolean",
+            "default": false
+          }
         }
       }
-    }
+    ]
   },
   "scripts": {
     "lint": "eslint .",

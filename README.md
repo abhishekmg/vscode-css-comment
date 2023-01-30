@@ -17,8 +17,11 @@ The following properties are configurable:
   "remToPxComment.remConversionValue": 16
 
   // tells if to convert from rem to px or the other way around
-  "remToPxComment.convertToRemOrPx": "px"
+  "remToPxComment.convertToPx": true
   
+  // tells if to convert from px to rem or the other way around
+  "remToPxComment.convertToRem": true
+
   // tells if to add increment and decrement key board shortcuts
   "remToPxComment.addKeyBoardShortcuts: false
 ```

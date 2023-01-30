@@ -79,20 +79,37 @@ function decorate(editor) {
 
   const sourceCodeArr = sourceCode.split("\n");
 
-  const pxOrRemConfig = configuration.convertToRemOrPx;
-
-  const convertToPx = pxOrRemConfig === "px";
+  const convertToPx = configuration.convertToPx;
+  const convertToRem = configuration.convertToRem;
 
   function containsNumbers(str) {
     return /\d/.test(str);
   }
 
   for (let line = 0; line < sourceCodeArr.length; line++) {
-    let match = sourceCodeArr[line].match(convertToPx ? regex : pxRegex); // match is true if line has rem text
+    let match = null;
+
+    if (convertToPx) {
+      if (sourceCodeArr[line].match(regex) !== null) {
+        match = sourceCodeArr[line].match(regex);
+      }
+    }
+
+    if (convertToRem) {
+      if (sourceCodeArr[line].match(pxRegex) !== null) {
+        match = sourceCodeArr[line].match(pxRegex);
+      }
+    }
+
     if (match !== null && match.length !== 0 && containsNumbers(match[0])) {
-      const matchIndex = convertToPx
-        ? /[\d\.]+rem/.exec(sourceCodeArr[line]).index
-        : /[\d\.]+px/.exec(sourceCodeArr[line]).index;
+      let matchIndex;
+
+      if (match[0].includes("rem")) {
+        matchIndex = /[\d\.]+rem/.exec(sourceCodeArr[line]).index;
+      }
+      if (match[0].includes("px")) {
+        matchIndex = /[\d\.]+px/.exec(sourceCodeArr[line]).index;
+      }
 
       // if line has a rem text
       // what is Range ? https://code.visualstudio.com/api/references/vscode-api#Range
@@ -107,7 +124,7 @@ function decorate(editor) {
 
       let finalRenderStr = "";
 
-      if (convertToPx) {
+      if (match[0].includes("rem")) {
         match.forEach((item) => {
           finalRenderStr = `${finalRenderStr} ${
             convertToRemOrPx(item, "px")
@@ -115,7 +132,8 @@ function decorate(editor) {
               : ""
           }`;
         });
-      } else {
+      }
+      if (match[0].includes("px")) {
         match.forEach((item) => {
           finalRenderStr = `${finalRenderStr} ${
             convertToRemOrPx(item, "rem")

@@ -2,7 +2,7 @@
   "name": "px-comment",
   "displayName": "rem-to-px-comment",
   "description": "",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "publisher": "abhishekmg",
   "repository": {
     "type": "git",
@@ -84,14 +84,13 @@
             "default": "16",
             "description": "value to convert px to rem, default is 16px"
           },
-          "remToPxComment.convertToRemOrPx": {
-            "type": "string",
-            "default": "px",
-            "enum": [
-              "px",
-              "rem"
-            ],
-            "description": "tell if conversion is from rem to px to the other way around"
+          "remToPxComment.convertToPx": {
+            "type": "boolean",
+            "default": true
+          },
+          "remToPxComment.convertToRem": {
+            "type": "boolean",
+            "default": true
           },
           "remToPxComment.addKeyBoardShortcuts": {
             "type": "boolean",

@@ -118,7 +118,7 @@ function decorate(editor) {
         new vscode.Position(line, matchIndex),
         new vscode.Position(
           line,
-          matchIndex + getLengthOfAllStringsInArray(match) + 30
+          matchIndex + getLengthOfAllStringsInArray(match) + 100000
         )
       );
 

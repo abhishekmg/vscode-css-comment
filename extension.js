@@ -143,15 +143,31 @@ function decorate(editor) {
         });
       }
 
-      let decoration = {
-        range: range,
-        renderOptions: {
-          after: {
-            contentText: `${finalRenderStr}`,
-            color: configuration.commentColor,
+      let decoration;
+
+      if (match[0].includes("px")) {
+        decoration = {
+          range: range,
+          renderOptions: {
+            after: {
+              contentText: `${finalRenderStr}`,
+              color: configuration.pxCommentColor,
+            },
           },
-        },
-      };
+        };
+      }
+
+      if (match[0].includes("rem")) {
+        decoration = {
+          range: range,
+          renderOptions: {
+            after: {
+              contentText: `${finalRenderStr}`,
+              color: configuration.remCommentColor,
+            },
+          },
+        };
+      }
 
       // range tells what position to highlight
 

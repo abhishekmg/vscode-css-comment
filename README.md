@@ -10,8 +10,11 @@ This extention renders the px values of the rem numbers or rem valurs of px numb
 The following properties are configurable:
 
 ```javascript
-  // Decoration color for the comment value
-  "remToPxComment.commentColor": "#36C210",
+  // Decoration color for the px comment value
+  "remToPxComment.pxCommentColor": "#36C210",
+
+    // Decoration color for the rem comment value
+  "remToPxComment.remCommentColor": "#D61355",
 
   // value to convert px to rem, default is 16px
   "remToPxComment.remConversionValue": 16

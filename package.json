@@ -2,7 +2,7 @@
   "name": "px-comment",
   "displayName": "rem-to-px-comment",
   "description": "",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "publisher": "abhishekmg",
   "repository": {
     "type": "git",
@@ -100,6 +100,16 @@
           "remToPxComment.addKeyBoardShortcuts": {
             "type": "boolean",
             "default": false
+          },
+          "remToPxComment.hasLineBgColor": {
+            "type": "boolean",
+            "default": false,
+            "description": "if true the converted line will have a bg color"
+          },
+          "remToPxComment.lineBgColor": {
+            "type": "string",
+            "default": "#36C210",
+            "description": "bg color of converted line, the color appled will be of low opacity"
           }
         }
       }

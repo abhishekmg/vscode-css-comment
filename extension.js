@@ -5,8 +5,19 @@ const vscode = require("vscode");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
-const decorationType = vscode.window.createTextEditorDecorationType({
+const configuration = vscode.workspace.getConfiguration("remToPxComment");
+
+// this is only initiated when we open the app for the first time.
+let decorationType = vscode.window.createTextEditorDecorationType({
+  backgroundColor: `${configuration.lineBgColor}20`,
   after: { margin: "0 0 0 1rem" },
+  isWholeLine: true,
+});
+
+let decorationTypeNoBgColor = vscode.window.createTextEditorDecorationType({
+  backgroundColor: "unset",
+  after: { margin: "0 0 0 1rem" },
+  isWholeLine: true,
 });
 
 /**
@@ -177,7 +188,10 @@ function decorate(editor) {
   }
 
   // finally sets the decorationType (color etc) , decorationsArray (what to exactly deocrate)
-  editor.setDecorations(decorationType, decorationsArray);
+  editor.setDecorations(
+    configuration.hasLineBgColor ? decorationType : decorationTypeNoBgColor,
+    decorationsArray
+  );
 }
 
 // this method is called when your extension is deactivated

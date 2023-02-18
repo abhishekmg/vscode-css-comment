@@ -26,7 +26,14 @@ The following properties are configurable:
   "remToPxComment.convertToRem": true
 
   // tells if to add increment and decrement key board shortcuts
-  "remToPxComment.addKeyBoardShortcuts: false
+  "remToPxComment.addKeyBoardShortcuts": false
+
+  // if true the converted line will have a bg color
+  "remToPxComment.hasLineBgColor": false
+
+  // bg color of converted line, the color appled will be of low opacity
+  "remToPxComment.lineBgColor": "#36C210"
+
 ```
 
 ## Keyboard shortcuts 
